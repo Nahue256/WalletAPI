@@ -13,7 +13,14 @@ export const createUser = async (
       status: 'success',
       data: { user }
     });
-  } catch (error) {
+  } catch (error: any) {
+    if (error.message === 'User with this email already exists') {
+      res.status(400).json({
+        status: 'error',
+        message: error.message
+      });
+      return;
+    }
     next(error);
   }
 };
@@ -30,11 +37,12 @@ export const getUser = async (
       data: { user }
     });
   } catch (error: any) {
-    if(error.message === 'User not found') {
+    if (error.message === 'User not found') {
       res.status(404).json({
         status: 'error',
-        message: 'User not found'
+        message: error.message
       });
+      return;
     }
     next(error);
   }
@@ -64,10 +72,18 @@ export const updateUser = async (
   try {
     const user = await userService.updateUser(req.params.id, req.body);
     res.json({
-      status: 'User successfully updated',
+      status: 'success',
+      message: 'User successfully updated',
       data: { user }
     });
-  } catch (error) {
+  } catch (error: any) {
+    if (error.message === 'User not found') {
+      res.status(404).json({
+        status: 'error',
+        message: error.message
+      });
+      return;
+    }
     next(error);
   }
 };
@@ -80,9 +96,17 @@ export const deleteUser = async (
   try {
     await userService.deleteUser(req.params.id);
     res.json({
-      status: 'User successfully deleted'
+      status: 'success',
+      message: 'User successfully deleted'
     });
-  } catch (error) {
+  } catch (error: any) {
+    if (error.message === 'User not found') {
+      res.status(404).json({
+        status: 'error',
+        message: error.message
+      });
+      return;
+    }
     next(error);
   }
 }; 

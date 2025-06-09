@@ -44,30 +44,21 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 // Routes
 app.use("/api", routes);
 
-// Error handling middleware
+// Generic error handling middleware
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  if (
-    err.message === "User with this email already exists" ||
-    err.message === "User with this username already exists"
-  ) {
-    res.status(400).json({
-      status: "error",
-      message: "User with this email already exists",
-    });
-  } else {
-    res.status(500).json({
-      status: "error",
-      message: "Something went wrong!",
-      moreinfo: err.message,
-    });
-  }
+  console.error('Error:', err);
+  
+  res.status(500).json({
+    status: "error",
+    message: "Internal server error"
+  });
 });
 
 // 404 handler
 app.use((req: Request, res: Response) => {
   res.status(404).json({
     status: "error",
-    message: "Not Found",
+    message: "Not Found"
   });
 });
 
