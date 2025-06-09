@@ -1,51 +1,6 @@
 import request from 'supertest';
 import { app } from '../../app';
 import { createMultipleTestUsers, createTestUser, getUserRepository } from '../utils';
-import { AppDataSource } from '../../config/database';
-
-beforeAll(async () => {
-  // Ensure we're using test database configuration
-  if (!AppDataSource.isInitialized) {
-    await AppDataSource.initialize();
-  }
-  // Drop all tables and recreate schema
-  await AppDataSource.synchronize(true);
-});
-
-afterAll(async () => {
-    if (AppDataSource.isInitialized) {
-      // Clean up tables first
-      const entities = AppDataSource.entityMetadatas;
-      for (const entity of entities) {
-        const repository = AppDataSource.getRepository(entity.name);
-        await repository.clear();
-      }
-      // Then drop database and close connection
-      await AppDataSource.dropDatabase();
-      await AppDataSource.destroy();
-    }
-
-});
-
-beforeEach(async () => {
-
-    // Ensure connection is active
-    if (!AppDataSource.isInitialized) {
-      await AppDataSource.initialize();
-    }
-    // Drop all tables and recreate schema before each test
-    await AppDataSource.synchronize(true);
-
-});
-
-afterEach(async () => {
-  // Clean all tables after each test
-  const entities = AppDataSource.entityMetadatas;
-  for (const entity of entities) {
-    const repository = AppDataSource.getRepository(entity.name);
-    await repository.clear();
-  }
-});
 
 const userDataTest = {
   email: 'test@example.com',

@@ -8,7 +8,10 @@ const config: Config.InitialOptions = {
   forceExit: true,
   clearMocks: true,
   resetMocks: true,
-  restoreMocks: true
+  restoreMocks: true,
+  setupFilesAfterEnv: ['<rootDir>/src/test/setup.ts'],
+  maxWorkers: 1,
+  testTimeout: 30000
 };
 
 export default config; 

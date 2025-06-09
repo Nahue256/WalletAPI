@@ -1,39 +1,7 @@
 import request from 'supertest';
 import { app } from '../../app';
 import { createTestUser } from '../utils';
-import { AppDataSource } from '../../config/database';
 import { generateToken } from '../../utils/jwt.util';
-
-beforeAll(async () => {
-  // Ensure we're using test database configuration
-  if (!AppDataSource.isInitialized) {
-    await AppDataSource.initialize();
-  }
-  // Drop all tables and recreate schema
-  await AppDataSource.synchronize(true);
-});
-
-afterAll(async () => {
-  if (AppDataSource.isInitialized) {
-    // Drop all tables before closing connection
-    await AppDataSource.dropDatabase();
-    await AppDataSource.destroy();
-  }
-});
-
-beforeEach(async () => {
-  // Drop all tables and recreate schema before each test
-  await AppDataSource.synchronize(true);
-});
-
-afterEach(async () => {
-  // Clean all tables after each test
-  const entities = AppDataSource.entityMetadatas;
-  for (const entity of entities) {
-    const repository = AppDataSource.getRepository(entity.name);
-    await repository.clear();
-  }
-});
 
 const userData = {
   email: 'test@example.com',

@@ -11,7 +11,6 @@ export interface AuthRequest<P = {}, ResBody = {}, ReqBody = {}> extends Request
 export const authenticate = (req: AuthRequest, res: Response, next: NextFunction): void => {
   try {
     const token = extractToken(req.headers.authorization);
-    console.log(req.headers);
     
     if (!token) {
       res.status(401).json({

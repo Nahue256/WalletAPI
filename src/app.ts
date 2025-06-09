@@ -20,9 +20,8 @@ import { AppDataSource } from "./config/database";
 export const app: Express = express();
 const port: number = parseInt(process.env.PORT || "3000", 10);
 
-// Initialize database
-console.log(process.env.NODE_ENV);
-if (!AppDataSource.isInitialized) {
+// Initialize database connection (skip during tests)
+if (process.env.NODE_ENV !== 'test' && !AppDataSource.isInitialized) {
   AppDataSource.initialize()
     .then(() => {
       console.log("Data Source has been initialized!");
