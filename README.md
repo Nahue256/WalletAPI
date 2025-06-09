@@ -41,6 +41,12 @@ chmod 711 ./up_dev.sh
 
 - Test the wallets APIs.
 
+## How to test the API using Postman
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](./docs/postman-collection.json)
+
+**Quick Start:** Import → Create User → Sign In → Test Endpoints
+
 ## How to run the tests
 
 ```
