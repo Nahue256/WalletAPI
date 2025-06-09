@@ -1,10 +1,15 @@
 import { AppDataSource } from '../config/database';
 import { User, UserEntity } from '../entities/user.entity';
+import { Wallet, WalletEntity } from '../entities/wallet.entity';
 import { Repository } from 'typeorm';
 import { hashPassword } from '../utils/password.util';
 
 export const getUserRepository = (): Repository<User> => {
   return AppDataSource.getRepository(UserEntity);
+};
+
+export const getWalletRepository = (): Repository<Wallet> => {
+  return AppDataSource.getRepository(WalletEntity);
 };
 
 export const createTestUser = async (userData: Partial<User> = {}): Promise<User> => {
@@ -19,10 +24,25 @@ export const createTestUser = async (userData: Partial<User> = {}): Promise<User
   }
 
   const user = await repository.save({
+    email: `test-${Date.now()}@example.com`,
+    password: 'password123',
     ...userData
   });
 
   return user;
+};
+
+export const createTestWallet = async (userId: string, walletData: Partial<Wallet> = {}): Promise<Wallet> => {
+  const repository = getWalletRepository();
+  
+  const wallet = await repository.save({
+    userId,
+    chain: 'ethereum',
+    address: `0x${Date.now().toString(16)}`,
+    ...walletData
+  });
+
+  return wallet;
 };
 
 export const createMultipleTestUsers = async (userData: Partial<User> = {}): Promise<User[]> => {
