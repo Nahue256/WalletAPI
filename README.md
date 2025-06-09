@@ -56,12 +56,14 @@ chmod 711 ./up_test.sh
 
 ## Areas to improve
 
-- Data should be moved from tests to an external file
+- Data should be moved from tests to an external file.
 - Error handling could be improved.
 - A Seed migration would be useful to have an already working app with data.
 - The ORM is being used with Sinchronize instead of Migrations.
 - Deployment could be done.
-- Validate duplicate email in the put route
+- Add request validation using libraries like joi and validate email format, password strength, etc.
+- Add CSRF protection and refresh token mechanism.
+- Pagination for the GET endpoints and DB indexing.
 
 ## Errors to be fixed
 
