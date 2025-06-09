@@ -4,11 +4,20 @@ Backend API for managing users and their wallets
 
 ### Features
 
+- Sign in a User
+- Sign out a user
+
 - Create new Users
 - Get Users list
 - Get User by ID
 - Update User
 - Delete User
+
+- Get all wallets for the authenticated user
+- Create a new wallet
+- Get a specific wallet by ID
+- Update a wallet
+- Delete a wallet
 
 ## Pre-requisites
 - Docker installed
@@ -26,11 +35,11 @@ chmod 711 ./up_dev.sh
 
 - When the app is running, enter the API Swagger http://localhost:3000/api-docs and create an user using the POST /user route.
 
-- Use the /signin route to authenticate with the email and password that you registered
+- Use the /signin route to authenticate with the email and password that you registered.
 
-- Go to the wallets API routes and click in the padlock to the right of the Wallet API you want to test, and enter the token like this: "Bearer {TOKEN}" 
+- Go to the wallets API routes and click in the padlock to the right of the Wallet API you want to test, and enter the token like this: "Bearer {TOKEN}".
 
-- Test the wallets APIs
+- Test the wallets APIs.
 
 ## How to run the tests
 
