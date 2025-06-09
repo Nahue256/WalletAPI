@@ -152,7 +152,7 @@
               ],
               "body": {
                 "mode": "raw",
-                "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"securePassword123\",\n  \"age\": 30\n}"
+                "raw": "{\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"securePassword123\"\n}"
               },
               "url": {
                 "raw": "{{baseUrl}}/api/users",
@@ -245,7 +245,7 @@
               ],
               "body": {
                 "mode": "raw",
-                "raw": "{\n  \"name\": \"John Smith\",\n  \"email\": \"john.smith@example.com\",\n  \"age\": 31\n}"
+                "raw": "{\n  \"email\": \"john.smith@example.com\",\n  \"password\": \"newSecurePassword123\"\n}"
               },
               "url": {
                 "raw": "{{baseUrl}}/api/users/{{userId}}",
