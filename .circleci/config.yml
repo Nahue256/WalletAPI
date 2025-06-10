@@ -50,7 +50,7 @@ jobs:
 
       - run:
           name: Send coverage to Coveralls
-          command: npm run coverage
+          command: make test-coverage
 
       - store_test_results:
           path: ./test-results
