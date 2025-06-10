@@ -48,11 +48,6 @@ jobs:
             DB_NAME: express_db_test
             DB_PORT: 5432
 
-      - coveralls/upload:
-          coverage_format: lcov
-          path_to_lcov: ./coverage/lcov.info
-          verbose: true
-
       - store_test_results:
           path: ./test-results
 
