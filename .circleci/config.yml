@@ -25,9 +25,7 @@ jobs:
 
       - run:
           name: Install Dependencies
-          command: |
-            npm ci
-            npm install -g coveralls
+          command: npm ci
 
       - save_cache:
           paths:

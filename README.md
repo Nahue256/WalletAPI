@@ -28,6 +28,8 @@ Backend API for managing users and their wallets
 
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/Nahue256/WalletAPI/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Nahue256/WalletAPI/tree/main)
 
+[![Coverage Status](https://coveralls.io/repos/github/Nahue256/WalletAPI/badge.svg?branch=main)](https://coveralls.io/github/Nahue256/WalletAPI?branch=main)
+
 ## How to run the APP
 
 ```
@@ -60,7 +62,7 @@ chmod 711 ./up_test.sh
 
 ## Areas to improve
 
-- Data should be moved from tests to an external file.
+- Data should be moved from tests to an external file, coverage could be better.
 - Error handling could be improved.
 - A Seed migration would be useful to have an already working app with data.
 - The ORM is being used with Sinchronize instead of Migrations.
