@@ -24,6 +24,10 @@ Backend API for managing users and their wallets
 - Docker compose installed
 - Ports free: 3000 and 5432
 
+## Badges
+
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/Nahue256/WalletAPI/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Nahue256/WalletAPI/tree/main)
+
 ## How to run the APP
 
 ```
