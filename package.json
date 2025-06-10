@@ -10,7 +10,7 @@
     "watch": "tsc -w",
     "test": "jest --runInBand",
     "test:watch": "jest --watch --runInBand",
-    "test:coverage": "jest --coverage --runInBand"
+    "test:coverage": "jest --coverage --coverageReporters=text-lcov --runInBand"
   },
   "dependencies": {
     "@types/bcrypt": "^5.0.2",
