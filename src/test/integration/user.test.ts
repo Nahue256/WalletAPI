@@ -91,7 +91,7 @@ describe('User Endpoints', () => {
         .send(updateData)
         .expect(200);
 
-      expect(response.body.status).toBe('User successfully updated');
+      expect(response.body.status).toBe('success');
       expect(response.body.data.user.email).toBe(updateData.email);
     });
   });
