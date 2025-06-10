@@ -3,7 +3,7 @@ version: 2.1
 orbs:
   node: circleci/node@5.1.0
   docker: circleci/docker@2.4.0
-  coverage: circleci/coverage@2.2.5
+  coveralls: coveralls/coveralls@2.2.5
 
 jobs:
   test:
@@ -47,7 +47,7 @@ jobs:
             DB_PASSWORD: admin123
             DB_NAME: express_db_test
             DB_PORT: 5432
-            
+
       - run:
           name: Send coverage to Coveralls
           command: npm run coverage
